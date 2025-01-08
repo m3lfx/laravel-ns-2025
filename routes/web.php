@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtistController;
+use PHPUnit\TextUI\Configuration\Php;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,8 @@ Route::get('/', function () {
 
 Route::get('/first', function () {
 
-    return Redirect::to('second');
+    // return Redirect::to('/my/long/calendar/route');
+    return Redirect::route('calendar');
 });
 
 
@@ -63,3 +65,38 @@ Route::get('/item', function () {
 });
 
 Route::view('/item', 'item');
+
+Route::get(
+    '/my/long/calendar/route',
+    function () {
+        return view('calendar');
+    }
+)->name('calendar');
+// Route::get('save/{princess}', function ($princess) {
+//     return "Sorry, {$princess} is in another castle. :(";
+// })->where('princess', '[A-Za-z]+');
+
+Route::get('save/{princess}/{unicorn}', function ($princess, $unicorn) {
+    return "{$princess} loves {$unicorn}";
+})->where('princess', '[A-Za-z]+')
+    ->where('unicorn', '[0-9]+');
+
+
+Route::prefix('items')->group(function () {
+
+    Route::get('/items/index', function () {
+       return "from index";
+    });
+
+    Route::get('/items/create', function () {
+        return "from create";
+     });
+
+     Route::get('/items/edit', function () {
+        return "from edit";
+     });
+
+     Route::get('/items/delete', function () {
+        return "from delete";
+     });
+});
