@@ -43,13 +43,23 @@ Route::get('/second', function () {
     return 'Second route.';
 });
 
-Route::get('file/download', function () {
-    $file = 'C:\Users\rommel dalisay\Desktop\2T-2025-att.txt';
-    return Response::download($file);
+// Route::get('file/download', function () {
+//     $file = 'C:\Users\rommel dalisay\Desktop\2T-2025-att.txt';
+//     return Response::download($file);
+// });
+
+// Route::get('/example', function () {
+//     // $squirrel = 
+//     $data['manyThings'] = array('one', 'two', 'three', 'four');
+//     return view('example', $data );
+// });
+
+Route::get('/home', function () {
+    return view('home');
 });
 
-Route::get('/example', function () {
-    // $squirrel = 
-    $data['manyThings'] = array('one', 'two', 'three', 'four');
-    return view('example', $data );
+Route::get('/item', function () {
+    return view('item');
 });
+
+Route::view('/item', 'item');
