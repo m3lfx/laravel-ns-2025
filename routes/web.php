@@ -56,47 +56,49 @@ Route::get('/second', function () {
 //     return view('example', $data );
 // });
 
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
-Route::get('/item', function () {
-    return view('item');
-});
+// Route::get('/item', function () {
+//     return view('item');
+// });
 
-Route::view('/item', 'item');
+// Route::view('/item', 'item');
 
-Route::get(
-    '/my/long/calendar/route',
-    function () {
-        return view('calendar');
-    }
-)->name('calendar');
+// Route::get(
+//     '/my/long/calendar/route',
+//     function () {
+//         return view('calendar');
+//     }
+// )->name('calendar');
 // Route::get('save/{princess}', function ($princess) {
 //     return "Sorry, {$princess} is in another castle. :(";
 // })->where('princess', '[A-Za-z]+');
 
-Route::get('save/{princess}/{unicorn}', function ($princess, $unicorn) {
-    return "{$princess} loves {$unicorn}";
-})->where('princess', '[A-Za-z]+')
-    ->where('unicorn', '[0-9]+');
+// Route::get('save/{princess}/{unicorn}', function ($princess, $unicorn) {
+//     return "{$princess} loves {$unicorn}";
+// })->where('princess', '[A-Za-z]+')
+//     ->where('unicorn', '[0-9]+');
 
 
-Route::prefix('items')->group(function () {
+// Route::prefix('items')->group(function () {
 
-    Route::get('/items/index', function () {
-       return "from index";
-    });
+//     Route::get('/items/index', function () {
+//        return "from index";
+//     });
 
-    Route::get('/items/create', function () {
-        return "from create";
-     });
+//     Route::get('/items/create', function () {
+//         return "from create";
+//      });
 
-     Route::get('/items/edit', function () {
-        return "from edit";
-     });
+//      Route::get('/items/edit', function () {
+//         return "from edit";
+//      });
 
-     Route::get('/items/delete', function () {
-        return "from delete";
-     });
-});
+//      Route::get('/items/delete', function () {
+//         return "from delete";
+//      });
+// });
+
+Route::get('/artists/store', [ArtistController::class, 'store'] )->name('artist.store');
