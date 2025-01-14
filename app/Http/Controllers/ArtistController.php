@@ -40,4 +40,17 @@ class ArtistController extends Controller
         // dd(compact('artist'));
         return view('artist.edit', compact('artist'));
     }
+
+    public function update(Request $request, $id) {
+        // dd($id, $request);
+        $artist = Artist::find($id);
+        $artist->name = trim($request->name);
+        $artist->country = trim($request->country);
+        $artist->img_path = trim($request->img_path);
+
+        $artist->save();
+
+        return "artist update";
+
+    }
 }

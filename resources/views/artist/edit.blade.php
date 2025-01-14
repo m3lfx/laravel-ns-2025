@@ -3,7 +3,7 @@
 @section('body')
     <div class="container-lg">
         {{-- {{dump($artist)}} --}}
-        <form action="" method="POST">
+        <form action="{{route('artist.update',['id'=>$artist->id])}}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Artist Name</label>
