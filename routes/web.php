@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\AlbumController;
 use PHPUnit\TextUI\Configuration\Php;
 
 /*
@@ -93,3 +94,5 @@ Route::prefix('artists')->group(function () {
 
     
 });
+
+Route::resource('albums', AlbumController::class);
