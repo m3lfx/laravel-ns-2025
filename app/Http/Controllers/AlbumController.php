@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Artist;
+use App\Models\Album;
 
 class AlbumController extends Controller
 {
@@ -29,7 +30,14 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $album = new Album();
+        $album->title = $request->title;
+        $album->genre = $request->genre;
+        $album->date_released = $request->date_released;
+        $album->artist_id = $request->artist_id;
+        // dd($request);
+        $album->save();
+        return redirect('/albums');
     }
 
     /**
