@@ -86,7 +86,7 @@ Route::prefix('artists')->group(function () {
 
     Route::get('/', [ArtistController::class, 'index'])->name('artist.index');
     Route::get('/create', [ArtistController::class, 'create'])->name('artist.create');
-    Route::get('/store', [ArtistController::class, 'store'])->name('artist.store');
+    Route::post('/store', [ArtistController::class, 'store'])->name('artist.store');
 
 
     

@@ -21,12 +21,19 @@ class ArtistController extends Controller
         
     }
 
-    public function store() {
+    public function store(Request $request) {
+
+        // dd($request);
+        
+        // dd($request->img_path);
         $artist = new Artist();
-        $artist->name = 'mike hanopol';
-        $artist->country = 'philippines';
-        $artist->img_path = "mike_photo.jpg";
+        $artist->name = trim($request->name);
+        $artist->country = trim($request->country);
+        $artist->img_path = trim($request->img_path);
+       
         $artist->save();
+
+        return "artist saved";
 
     }
 }
