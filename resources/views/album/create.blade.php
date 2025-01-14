@@ -3,7 +3,7 @@
 @section('body')
     <div class="container-lg">
         {{-- {{ dd($artists) }} --}}
-        <form action="{{ url('/artists/store') }}" method="POST">
+        <form action="{{ url('/albums') }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Album Name</label>
