@@ -9,7 +9,12 @@ use App\Models\Artist;
 class ArtistController extends Controller
 {
     public function index() {
-        
+        $artists = Artist::all();
+        dd($artists);
+    }
+
+    public function create() {
+        return view('artist.create');
     }
 
     public function edit($id) {

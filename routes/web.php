@@ -82,23 +82,12 @@ Route::get('/second', function () {
 //     ->where('unicorn', '[0-9]+');
 
 
-// Route::prefix('items')->group(function () {
+Route::prefix('artists')->group(function () {
 
-//     Route::get('/items/index', function () {
-//        return "from index";
-//     });
+    Route::get('/', [ArtistController::class, 'index'])->name('artist.index');
+    Route::get('/create', [ArtistController::class, 'create'])->name('artist.create');
+    Route::get('/store', [ArtistController::class, 'store'])->name('artist.store');
 
-//     Route::get('/items/create', function () {
-//         return "from create";
-//      });
 
-//      Route::get('/items/edit', function () {
-//         return "from edit";
-//      });
-
-//      Route::get('/items/delete', function () {
-//         return "from delete";
-//      });
-// });
-
-Route::get('/artists/store', [ArtistController::class, 'store'] )->name('artist.store');
+    
+});
