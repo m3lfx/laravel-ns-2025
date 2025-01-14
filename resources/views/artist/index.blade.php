@@ -22,6 +22,8 @@
                         <td>{{$artist->country}}</td>
                         <td>{{$artist->img_path}}</td>
                         <td>{{$artist->created_at}}</td>
+                        <td><a href="{{route('artist.edit',['id'=> $artist->id])}}"><i class="fa-regular fa-pen-to-square"></i></a></td>
+                        <td><a href="{{route('artist.delete',['id'=> $artist->id])}}" style="color:red"><i class="fa-regular fa-trash-can" ></i></a></td>
                     </tr>
                 @endforeach
 
