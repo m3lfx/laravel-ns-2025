@@ -11,7 +11,8 @@ class ArtistController extends Controller
     public function index()
     {
         $artists = Artist::all();
-        dd($artists);
+        // dd($artists);
+        return view('artist.index', compact('artists'));
     }
 
     public function create()
@@ -29,7 +30,7 @@ class ArtistController extends Controller
 
         $artist->save();
 
-        return "artist saved";
+        return redirect('/artists');
     }
 
     public function edit($id)
@@ -50,13 +51,13 @@ class ArtistController extends Controller
 
         $artist->save();
 
-        return "artist update";
+        return redirect()->route('artist.index');
 
     }
 
     public function delete($id) {
         // Artist::find($id)->delete();
         Artist::destroy([$id]);
-        return "artist deleted";
+        return redirect()->route('artist.index');
     }
 }
