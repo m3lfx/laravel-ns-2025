@@ -53,4 +53,10 @@ class ArtistController extends Controller
         return "artist update";
 
     }
+
+    public function delete($id) {
+        // Artist::find($id)->delete();
+        Artist::destroy([$id]);
+        return "artist deleted";
+    }
 }
