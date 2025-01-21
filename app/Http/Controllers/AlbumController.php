@@ -55,8 +55,13 @@ class AlbumController extends Controller
     public function edit(string $id)
     {
         $album = Album::find($id);
-        $artists = Artist::all();
-        return view('album.edit', compact('album', 'artists'));
+        // dd($album);
+        // $artists = Artist::all();
+        $artists = Artist::where('id', '<>', $album->artist_id)->get(['id','name']);
+        // dd($artists);
+        $album_artist = Artist::where('id', $album->artist_id)->first();
+        // dd($album_artist);
+        return view('album.edit', compact('album', 'artists', 'album_artist'));
 
     }
 

@@ -21,7 +21,7 @@
                 <input type="date" class="form-control" name="date_released" value="{{$album->date_released}}" id="date_released" aria-describedby="image">
             </div>
             <select class="form-select" aria-label="Default select example" name="artist_id">
-                <option selected>Open this select menu</option>
+                <option value="{{ $album_artist->id }}" selected>{{ $album_artist->name }}</option>
                 @foreach ($artists as $artist)
                     <option value="{{ $artist->id }}">{{ $artist->name }}</option>
                 @endforeach
