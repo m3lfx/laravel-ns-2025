@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="container-lg">
-        <form action="{{url('/artists/store')}}" method="POST">
+        <form action="{{route('user.register')}}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="fname" class="form-label">First Name</label>

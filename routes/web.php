@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\AlbumController;
-use PHPUnit\TextUI\Configuration\Php;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -97,3 +98,4 @@ Route::prefix('artists')->group(function () {
 
 Route::resource('albums', AlbumController::class);
 Route::view('/register', 'user.register');
+Route::post('/user/register', [UserController::class, 'register'])->name('user.register'); 
