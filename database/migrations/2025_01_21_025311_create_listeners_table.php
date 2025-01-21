@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('listeners', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
+            $table->string('fname', 50);
+            $table->string('lname', 50);
             $table->string('address');
             $table->string('img_path');
             $table->unsignedBigInteger('user_id');

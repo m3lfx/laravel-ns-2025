@@ -96,3 +96,4 @@ Route::prefix('artists')->group(function () {
 });
 
 Route::resource('albums', AlbumController::class);
+Route::view('/register', 'user.register');
