@@ -17,13 +17,26 @@
             <tbody>
                 @foreach ($albums as $album)
                     <tr>
-                        <td>{{$album->id}}</td>
-                        <td>{{$album->title}}</td>
-                        <td>{{$album->genre}}</td>
-                        <td>{{$album->date_released}}</td>
-                        <td>{{$album->artist_id}}</td>
-                        <td><a href="{{route('albums.edit',$album->id)}}"><i class="fa-regular fa-pen-to-square"></i></a></td>
-                        <td><a href="{{route('albums.destroy', $album->id)}}" style="color:red"><i class="fa-regular fa-trash-can" ></i></a></td>
+                        <td>{{ $album->id }}</td>
+                        <td>{{ $album->title }}</td>
+                        <td>{{ $album->genre }}</td>
+                        <td>{{ $album->date_released }}</td>
+                        <td>{{ $album->artist_id }}</td>
+                        <td><a href="{{ route('albums.edit', $album->id) }}"><i class="fa-regular fa-pen-to-square"></i></a>
+                        </td>
+                        {{-- <td><a href="{{route('albums.destroy', $album->id)}}" style="color:red"><i class="fa-regular fa-trash-can" ></i></a></td> --}}
+                        <td>
+                            <i class="fa-regular fa-trash-can">
+                                <form action="{{ route('albums.destroy', $album->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                                </form>
+                            </i>
+
+                        </td>
                     </tr>
                 @endforeach
 
