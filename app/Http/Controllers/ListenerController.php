@@ -13,12 +13,12 @@ class ListenerController extends Controller
      */
     public function index()
     {
-        // $listeners = Listener::all();
-        $listeners = DB::table('users AS u')
-            ->join('listeners AS l', 'u.id', '=', 'l.user_id')
-            ->orderBy('l.lname')
-            ->select('l.id', 'l.fname', 'l.lname', 'u.email', 'l.address', 'img_path')
-            ->get();
+        $listeners = Listener::all();
+        // $listeners = DB::table('users AS u')
+        //     ->join('listeners AS l', 'u.id', '=', 'l.user_id')
+        //     ->orderBy('l.lname')
+        //     ->select('l.id', 'l.fname', 'l.lname', 'u.email', 'l.address', 'img_path')
+        //     ->get();
         // dd($listeners);
         return view('listener.index', compact('listeners'));
     }
@@ -68,6 +68,7 @@ class ListenerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Listener::destroy($id);
+        return redirect()->route('listeners.index');
     }
 }
