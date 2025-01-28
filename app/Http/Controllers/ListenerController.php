@@ -13,7 +13,7 @@ class ListenerController extends Controller
      */
     public function index()
     {
-        $listeners = Listener::all();
+        $listeners = Listener::withTrashed()->get();
         // $listeners = DB::table('users AS u')
         //     ->join('listeners AS l', 'u.id', '=', 'l.user_id')
         //     ->orderBy('l.lname')
@@ -52,7 +52,9 @@ class ListenerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $listener = Listener::find($id);
+
+        dd($listener);
     }
 
     /**
@@ -69,6 +71,14 @@ class ListenerController extends Controller
     public function destroy(string $id)
     {
         Listener::destroy($id);
+        return redirect()->route('listeners.index');
+    }
+
+    public function restore($id) {
+        $listener = Listener::withTrashed()->find($id)->restore();
+        // dd($listener);
+        // $listener->restore();
+        
         return redirect()->route('listeners.index');
     }
 }
