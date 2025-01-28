@@ -18,7 +18,7 @@ class AlbumController extends Controller
         $albums = DB::table('albums AS al')
             ->join('artists AS ar', 'al.artist_id', '=', 'ar.id')
             ->select('al.id as album_id','al.title', 'al.genre', 'al.date_released', 'ar.name')
-            ->get();
+            ->paginate(10);
             // dd($albums);
         return view('album.index', compact('albums'));
     }
