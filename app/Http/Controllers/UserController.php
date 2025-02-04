@@ -96,4 +96,34 @@ class UserController extends Controller
     {
         return view('user.login');
     }
+
+    public function postSignin(Request $request)
+    {
+        $rules = [
+            'email' => 'required|email',
+            'password' => 'required',
+
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        if (auth()->attempt(array('email' => $request->email, 'password' => $request->password))) {
+
+            return redirect('/artists');
+        } else {
+            return redirect()->route('user.login')
+                ->with('error', 'Email Address And Password Are Wrong.');
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
 }

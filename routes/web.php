@@ -87,17 +87,18 @@ Route::get('/second', function () {
 
 Route::prefix('artists')->group(function () {
 
-    Route::get('/', [ArtistController::class, 'index'])->name('artist.index');
-    Route::get('/create', [ArtistController::class, 'create'])->name('artist.create');
-    Route::post('/store', [ArtistController::class, 'store'])->name('artist.store');
-    Route::get('/edit/{id}', [ArtistController::class, 'edit'])->name('artist.edit');
-    Route::post('/update/{id}', [ArtistController::class, 'update'])->name('artist.update');
-    Route::get('/delete/{id}', [ArtistController::class, 'delete'])->name('artist.delete');
+    Route::get('/', [ArtistController::class, 'index'])->name('artist.index')->middleware('auth');
+    Route::get('/create', [ArtistController::class, 'create'])->name('artist.create')->middleware('auth');
+    Route::post('/store', [ArtistController::class, 'store'])->name('artist.store')->middleware('auth');
+    Route::get('/edit/{id}', [ArtistController::class, 'edit'])->name('artist.edit')->middleware('auth');
+    Route::post('/update/{id}', [ArtistController::class, 'update'])->name('artist.update')->middleware('auth');
+    Route::get('/delete/{id}', [ArtistController::class, 'delete'])->name('artist.delete')->middleware('auth');
 
     
 });
 
-Route::resource('albums', AlbumController::class);
+Route::resource('albums', AlbumController::class)->middleware('auth');
+
 Route::view('/register', 'user.register');
 Route::post('/user/register', [UserController::class, 'register'])->name('user.register'); 
 Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile'); 
@@ -109,3 +110,7 @@ Route::resource('listeners', ListenerController::class);
 Route::get('/listeners/{id}/restore',  [ListenerController::class, 'restore'])->name('listeners.restore');
 
 Route::get('/login', [UserController::class, 'login'])->name('login');
+
+Route::post('signin', [UserController::class,'postSignin'])->name('user.signin');
+
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
