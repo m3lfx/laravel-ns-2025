@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Listener;
 use App\Models\Album;
 use DB;
+use Auth;
 
 class ListenerController extends Controller
 {
@@ -96,13 +97,15 @@ class ListenerController extends Controller
 
     public function addAlbumListener(Request $request)
     {
-        // dd($request);
-        $listener_id = 1;
+        // dd(Auth::id());
+        // $listener_id = 1;
+        $listener = Listener::where('user_id', Auth::id())->first();
+        // dd($listener);
         foreach($request->album_id as $album_id) {
             // dump($album_id);
             DB::table('album_listener')->insert([
                 'album_id' => $album_id,
-                'listener_id' => $listener_id,
+                'listener_id' => $listener->id,
                 'created_at' => now()
             ]);
 

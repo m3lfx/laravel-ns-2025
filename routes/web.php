@@ -114,3 +114,6 @@ Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('signin', [UserController::class,'postSignin'])->name('user.signin');
 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/listeners/edit-album', [ListenerController::class, 'editAlbumListener'])->name('listeners.editAlbumListener');
+    Route::post('/listeners/update-albums', [ListenerController::class, 'updateAlbums'])->name('listeners.updateAlbums');
