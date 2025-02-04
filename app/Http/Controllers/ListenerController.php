@@ -85,7 +85,10 @@ class ListenerController extends Controller
 
     public function addAlbums()
     {
-        $albums = Album::all();
+        // $albums = Album::all();
+        $albums = DB::table('albums')
+                ->join('artists', 'artists.id', '=', 'albums.artist_id')
+                ->get(['name', 'albums.id', 'title', 'genre', 'date_released']);
         // dd($albums);
         
         return view('listener.add_album', compact('albums'));

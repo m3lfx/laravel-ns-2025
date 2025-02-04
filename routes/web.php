@@ -101,6 +101,8 @@ Route::resource('albums', AlbumController::class);
 Route::view('/register', 'user.register');
 Route::post('/user/register', [UserController::class, 'register'])->name('user.register'); 
 Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile'); 
+
+Route::get('/listeners/add-album', [ListenerController::class, 'addAlbums'])->name('listeners.addAlbums');
 Route::resource('listeners', ListenerController::class);
 
 Route::get('/listeners/{id}/restore',  [ListenerController::class, 'restore'])->name('listeners.restore');
