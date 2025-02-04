@@ -93,4 +93,20 @@ class ListenerController extends Controller
         
         return view('listener.add_album', compact('albums'));
     }
+
+    public function addAlbumListener(Request $request)
+    {
+        // dd($request);
+        $listener_id = 1;
+        foreach($request->album_id as $album_id) {
+            // dump($album_id);
+            DB::table('album_listener')->insert([
+                'album_id' => $album_id,
+                'listener_id' => $listener_id,
+                'created_at' => now()
+            ]);
+
+        }
+        // return redirect()->route('listeners.index');
+    }
 }
