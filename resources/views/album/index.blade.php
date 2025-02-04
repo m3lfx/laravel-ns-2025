@@ -1,5 +1,4 @@
 @extends('layouts.base')
-
 @section('body')
     <div class="container-lg">
         {{-- {{dd($albums)}} --}}

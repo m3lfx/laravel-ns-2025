@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Listener;
+use App\Models\Album;
 use DB;
 
 class ListenerController extends Controller
@@ -80,5 +81,13 @@ class ListenerController extends Controller
         // $listener->restore();
         
         return redirect()->route('listeners.index');
+    }
+
+    public function addAlbums()
+    {
+        $albums = Album::all();
+        // dd($albums);
+        
+        return view('listener.add_album', compact('albums'));
     }
 }
