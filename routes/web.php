@@ -97,7 +97,7 @@ Route::prefix('artists')->group(function () {
     
 });
 
-Route::resource('albums', AlbumController::class)->middleware('auth');
+
 
 Route::view('/register', 'user.register');
 Route::post('/user/register', [UserController::class, 'register'])->name('user.register'); 
@@ -105,7 +105,9 @@ Route::get('/user/profile', [UserController::class, 'profile'])->name('user.prof
 
 Route::get('/listeners/add-album', [ListenerController::class, 'addAlbums'])->name('listeners.addAlbums');
 Route::post('/listeners/add-album', [ListenerController::class, 'addAlbumListener'])->name('listeners.addAlbumListener');
-Route::resource('listeners', ListenerController::class);
+Route::get('/listeners/edit-album', [ListenerController::class, 'editAlbumListener'])->name('listeners.editAlbumListener');
+
+
 
 Route::get('/listeners/{id}/restore',  [ListenerController::class, 'restore'])->name('listeners.restore');
 
@@ -115,5 +117,8 @@ Route::post('signin', [UserController::class,'postSignin'])->name('user.signin')
 
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/listeners/edit-album', [ListenerController::class, 'editAlbumListener'])->name('listeners.editAlbumListener');
-    Route::post('/listeners/update-albums', [ListenerController::class, 'updateAlbums'])->name('listeners.updateAlbums');
+Route::put('/listeners/update-albums', [ListenerController::class, 'updateAlbums'])->name('listeners.updateAlbums');
+
+Route::resource('listeners', ListenerController::class);
+Route::resource('albums', AlbumController::class)->middleware('auth');
+

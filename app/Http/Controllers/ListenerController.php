@@ -112,4 +112,38 @@ class ListenerController extends Controller
         }
         // return redirect()->route('listeners.index');
     }
+
+    public function editAlbumListener()
+    {
+      
+        
+        $myAlbums = DB::table('album_listener')->where('listener_id', Auth::id())->get()->pluck('album_id')->all();
+        // dd($myAlbums);
+        $albums = Album::all();
+        // dd($albums);
+       
+        return view('listener.edit_album', compact('myAlbums', 'albums'));
+    }
+
+    public function updateAlbums(Request $request)
+    {
+        // dd($request->album_id);
+        $listener = Listener::where('user_id', Auth::id())->select('id')->first();
+        // dd($listener_id);
+        DB::table('album_listener')->where('listener_id', Auth::id())->delete();
+        if (!empty($request->album_id)) {
+            foreach ($request->album_id as $album_id) {
+                DB::table('album_listener')->insert([
+                    'album_id' => $album_id,
+                    'listener_id' => $listener->id,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
+        }
+        
+        return redirect()->route('listeners.editAlbumListener')->with('success', 'albums updated');
+    }
+
+
 }
