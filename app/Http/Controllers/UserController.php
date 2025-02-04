@@ -91,4 +91,9 @@ class UserController extends Controller
         // dd($listener);
         return view('user.profile', compact('user', 'listener'));
     }
+
+    public function login()
+    {
+        return view('user.login');
+    }
 }

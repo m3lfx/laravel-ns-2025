@@ -107,3 +107,5 @@ Route::post('/listeners/add-album', [ListenerController::class, 'addAlbumListene
 Route::resource('listeners', ListenerController::class);
 
 Route::get('/listeners/{id}/restore',  [ListenerController::class, 'restore'])->name('listeners.restore');
+
+Route::get('/login', [UserController::class, 'login'])->name('login');
