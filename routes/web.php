@@ -122,6 +122,7 @@ Route::put('/listeners/update-albums', [ListenerController::class, 'updateAlbums
 
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::resource('listeners', ListenerController::class);
 Route::resource('albums', AlbumController::class)->middleware('auth');
 
