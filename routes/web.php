@@ -5,6 +5,7 @@ use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListenerController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -18,9 +19,9 @@ use App\Http\Controllers\ListenerController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/artists', [ArtistController::class, 'index'] );
 // Route::get('/books/{genre}', function ($genre) {
@@ -119,6 +120,8 @@ Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
 Route::put('/listeners/update-albums', [ListenerController::class, 'updateAlbums'])->name('listeners.updateAlbums');
 
+
+Route::get('/', [HomeController::class, 'index']);
 Route::resource('listeners', ListenerController::class);
 Route::resource('albums', AlbumController::class)->middleware('auth');
 

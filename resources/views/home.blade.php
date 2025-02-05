@@ -1,6 +1,12 @@
 @extends('layouts.base')
-@section('body')
-<h1>Hurray!</h1>
-<p>We have a template!</p>
-@stop
 
+@section('body')
+@include('layouts.header')
+    <div class="container-lg">
+        <table class="table table-striped">
+            <tbody>
+            </tbody>
+        </table>
+    </div class=" d-flex align-items-center justify-content-center">
+    <div></div>
+@endsection
