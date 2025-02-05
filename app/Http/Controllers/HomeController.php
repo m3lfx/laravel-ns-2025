@@ -13,7 +13,11 @@ class HomeController extends Controller
     public function search(Request $request) {
         $keyword = $request->query('search');
       
-        $results = DB::table('artists')->where('name', 'like', '%'.$keyword.'%')->paginate(10);
+        $results = DB::table('artists AS ar')
+                    ->join('albums AS al', 'ar.id', '=', 'al.artist_id')
+                    ->where('name', 'like', '%'.$keyword.'%')
+                    ->orWhere('country',  'like', '%'.$keyword.'%')
+                    ->paginate(10);
         // dd($results);
         // $total = DB::table('artists')->where('name', 'like', '%'.$keyword.'%')->get()->count();
         // dd($total);

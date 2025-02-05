@@ -8,12 +8,16 @@
             <thead>
                 <tr>
                     <th scope="col">name</th>
+                    <th scope="col">country</th>
+                    <th scope="col">albums</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($results as $result)
                     <tr>
                         <td>{{ $result->name }}</td>
+                        <td>{{ $result->country }}</td>
+                        <td>{{ $result->title }}</td>
                     </tr>
                 @endforeach
             </tbody>
